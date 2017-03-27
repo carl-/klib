@@ -25,3 +25,19 @@ contents.xcworkspacedata
 
 # Test byproducts
 test/build
+test/kbitset_test
+test/kbtree_test
+test/khash_keith
+test/khash_keith2
+test/khash_test
+test/klist_test
+test/kmin_test
+test/kseq_bench
+test/kseq_bench2
+test/kseq_test
+test/ksort_test
+test/ksort_test-stl
+test/kstring_bench
+test/kstring_bench2
+test/kstring_test
+test/kvec_test
