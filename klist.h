@@ -76,13 +76,13 @@
 #define kmp_alloc(name, mp) kmp_alloc_##name(mp)
 #define kmp_free(name, mp, p) kmp_free_##name(mp, p)
 
-#define KLIST_INIT2(SCOPE, name, kltype_t, kmpfree_t)					\
+#define KLIST_INIT2(SCOPE, name, kltype_t, kmpfree_f)					\
 	struct __kl1_##name {												\
 		kltype_t data;													\
 		struct __kl1_##name *next;										\
 	};																	\
 	typedef struct __kl1_##name kl1_##name;								\
-	KMEMPOOL_INIT2(SCOPE, name, kl1_##name, kmpfree_t)					\
+	KMEMPOOL_INIT2(SCOPE, name, kl1_##name, kmpfree_f)					\
 	typedef struct {													\
 		kl1_##name *head, *tail;										\
 		kmp_##name##_t *mp;												\
@@ -153,8 +153,8 @@
 		return &p->data;												\
 	}
 
-#define KLIST_INIT(name, kltype_t, kmpfree_t)							\
-	KLIST_INIT2(static inline klib_unused, name, kltype_t, kmpfree_t)
+#define KLIST_INIT(name, kltype_t, kmpfree_f)							\
+	KLIST_INIT2(static inline klib_unused, name, kltype_t, kmpfree_f)
 
 #define kliter_t(name) kl1_##name
 #define klist_t(name) kl_##name##_t
