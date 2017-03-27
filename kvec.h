@@ -147,10 +147,10 @@ int main() {
  *   kvec_t(int) array; kv_init(array);
  *   kv_pushp(int, array) = 42;
  */
-#define kv_pushp(type, v) (((v).n == (v).m)?							\
+#define kv_pushp(type, v) ((((v).n == (v).m)?							\
 						   ((v).m = ((v).m? (v).m<<1 : 2),				\
 							(v).a = (type*)realloc((v).a, sizeof(type) * (v).m), 0)	\
-						   : 0), ((v).a + ((v).n++))
+						   : 0), ((v).a + ((v).n++)))
 
 #define kv_a(type, v, i) (*(((v).m <= (size_t)(i)? \
 						  ((v).m = (v).n = (i) + 1, kv_roundup32((v).m), \
